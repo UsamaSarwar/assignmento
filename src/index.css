@@ -155,14 +155,15 @@
 .main-content-editor .ql-editor {
   flex-grow: 1;
   min-height: 400px;
-  padding: 16px 20px !important;
+  padding: 12px 15px !important;
 }
 
-.main-content-editor .ql-editor.ql-blank::before {
-  left: 20px !important;
-  top: 16px !important;
+.main-content-editor .ql-container.ql-snow .ql-editor.ql-blank::before {
+  left: 15px !important;
+  top: 12px !important;
   padding-left: 0 !important;
   padding-top: 0 !important;
+  right: 15px !important;
 }
 
 /* Paper Preview Specifics */
@@ -186,6 +187,59 @@
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important;
   padding-bottom: 2rem !important;
+}
+
+/* Headings in Preview */
+.paper-content.ql-editor h1 {
+  font-size: 2em !important;
+  font-weight: bold !important;
+  display: block;
+}
+
+.paper-content.ql-editor h2 {
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+  display: block;
+}
+
+.paper-content.ql-editor h3 {
+  font-size: 1.25em !important;
+  font-weight: bold !important;
+  display: block;
+}
+
+/* Alignment in Preview */
+.paper-content.ql-editor .ql-align-center {
+  text-align: center;
+}
+
+.paper-content.ql-editor .ql-align-right {
+  text-align: right;
+}
+
+.paper-content.ql-editor .ql-align-justify {
+  text-align: justify;
+}
+
+/* Lists in Preview */
+.paper-content.ql-editor ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.paper-content.ql-editor ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.paper-content.ql-editor li {
+  display: list-item !important;
+  list-style-type: inherit !important;
+  padding-left: 0.25rem !important;
 }
 
 /* Fix Placeholder in preview */

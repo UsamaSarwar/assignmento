@@ -12,6 +12,7 @@ export function MainEditor({ content, onContentChange }: MainEditorProps) {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
+      [{ 'align': [] }],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['clean']
     ],
@@ -22,14 +23,14 @@ export function MainEditor({ content, onContentChange }: MainEditorProps) {
       <div className="p-4 bg-muted/30 border-b border-border shrink-0">
         <h3 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">Editor</h3>
       </div>
-      <div className="flex-grow flex flex-col min-h-[500px]">
+      <div className="grow flex flex-col min-h-[500px]">
         <ReactQuill
           theme="snow"
           value={content}
           onChange={onContentChange}
           modules={modules}
           placeholder="Start writing your content here..."
-          className="flex-grow main-content-editor flex flex-col"
+          className="grow main-content-editor flex flex-col"
         />
       </div>
     </Card>
