@@ -14,6 +14,9 @@ import { Button } from '@/components/ui/button';
 import { Pencil, PenTool, Eye, FileImage } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+
 export function Home() {
   const { config, updateConfig, loading } = useAppConfig();
   const [content, setContent] = useState('');
@@ -98,11 +101,37 @@ export function Home() {
             
             {/* Right Column: Real-time Preview */}
             <div className="flex flex-col space-y-4">
-              <div className="flex items-center h-10">
+              <div className="flex items-center justify-between h-10">
                 <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
                   <Eye className="h-5 w-5 text-primary" />
                   Handwriting Preview
                 </h2>
+                <div className="flex items-center gap-4 bg-muted/40 px-3 py-1.5 rounded-xl border border-border/50 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="preview-lines" className="text-xs font-medium cursor-pointer">Lines</Label>
+                    <Switch 
+                      id="preview-lines"
+                      checked={config.paperLines} 
+                      onCheckedChange={(checked) => updateConfig({ ...config, paperLines: checked })} 
+                    />
+                  </div>
+                  {config.paperLines && (
+                    <div className="flex items-center gap-2 border-l border-border pl-4">
+                      <Label htmlFor="preview-line-offset" className="text-[10px] font-medium whitespace-nowrap text-muted-foreground">
+                        Offset: {config.lineOffset}px
+                      </Label>
+                      <input 
+                        id="preview-line-offset"
+                        type="range" 
+                        min="-20" 
+                        max="20" 
+                        value={config.lineOffset} 
+                        onChange={(e) => updateConfig({ ...config, lineOffset: e.target.value })} 
+                        className="w-20 h-1 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="grow flex items-start justify-center">
                 <PaperSheet 
