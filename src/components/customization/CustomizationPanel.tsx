@@ -208,6 +208,9 @@ export function CustomizationPanel({
                   <SelectItem value="none">None</SelectItem>
                   <SelectItem value="shadows">Shadows</SelectItem>
                   <SelectItem value="scanner">Scanner</SelectItem>
+                  <SelectItem value="vintage">Vintage (Aged)</SelectItem>
+                  <SelectItem value="warm-glow">Warm Glow</SelectItem>
+                  <SelectItem value="crumpled">Crumpled Paper</SelectItem>
                 </SelectContent>
               </Select>
             </div>

@@ -51,8 +51,11 @@ export function PaperSheet({ config, content, pageRef, placeholder }: PaperSheet
           <div 
             className={cn(
               "absolute inset-0 pointer-events-none z-10",
-              config.pageEffect === 'shadows' && "bg-linear-to-tr from-black/20 to-transparent",
-              config.pageEffect === 'scanner' && "bg-linear-to-b from-black/10 via-transparent to-black/10"
+              config.pageEffect === 'shadows' && "effect-shadows",
+              config.pageEffect === 'scanner' && "effect-scanner",
+              config.pageEffect === 'vintage' && "effect-vintage",
+              config.pageEffect === 'warm-glow' && "effect-warm-glow",
+              config.pageEffect === 'crumpled' && "effect-crumpled"
             )}
           />
         )}

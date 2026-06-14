@@ -25,13 +25,15 @@ export const applyPaperStylesLegacy = (
   pageEl.style.border = 'none';
   pageEl.style.overflowY = 'hidden';
 
-  if (effect === 'scanner') {
-    overlayEl.classList.add('shadows');
-    overlayEl.style.background = getScannerGradient();
-  } else if (effect === 'shadows') {
-    overlayEl.classList.add('shadows');
-    overlayEl.style.background = getShadowGradient();
-  } else if (effect !== 'none') {
-    overlayEl.classList.add(effect);
+  // Reset classes to avoid duplicate accumulation
+  overlayEl.className = 'absolute inset-0 pointer-events-none z-10';
+
+  if (effect !== 'none') {
+    overlayEl.classList.add(`effect-${effect}`);
+    if (effect === 'scanner') {
+      overlayEl.style.background = getScannerGradient();
+    } else if (effect === 'shadows') {
+      overlayEl.style.background = getShadowGradient();
+    }
   }
 };

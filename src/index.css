@@ -327,15 +327,56 @@
   font-family: inherit;
 }
 
-/* Paper Noise Texture */
+/* Paper Noise & Surface Texture */
+.paper-texture {
+  background: radial-gradient(circle at 50% 30%, #fffdfc 0%, #faf6f0 100%) !important;
+}
+
 .paper-texture::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
   pointer-events: none;
   z-index: 5;
+}
+
+/* Realistic Page Effects */
+.effect-shadows {
+  background: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.25) 100%),
+    linear-gradient(220deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 50%) !important;
+}
+
+.effect-scanner {
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0) 97%, rgba(0, 0, 0, 0.04) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, 0) 92%, rgba(0, 0, 0, 0.06) 100%) !important;
+  filter: contrast(1.08) brightness(1.02) saturate(0.9) sepia(0.05);
+}
+
+.effect-vintage {
+  background: 
+    radial-gradient(circle, transparent 40%, rgba(65, 43, 21, 0.25) 100%),
+    rgba(198, 160, 115, 0.15) !important;
+}
+
+.effect-warm-glow {
+  background: radial-gradient(circle at 85% 15%, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.05) 50%, transparent 90%) !important;
+}
+
+.effect-crumpled {
+  background: 
+    linear-gradient(105deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 2%),
+    linear-gradient(285deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 2%),
+    linear-gradient(20deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 3%),
+    linear-gradient(200deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 3%),
+    linear-gradient(145deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 2%),
+    linear-gradient(325deg, rgba(0,0,0,0.07) 0%, rgba(0,0,0,0) 2%),
+    linear-gradient(55deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 4%),
+    linear-gradient(235deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0) 4%) !important;
+  background-blend-mode: overlay;
 }
 
 /* Custom Scrollbar for the page */
@@ -355,3 +396,4 @@
 #page-a::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.2);
 }
+

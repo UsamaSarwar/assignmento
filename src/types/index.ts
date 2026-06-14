@@ -8,7 +8,7 @@ export interface Config {
   lineOffset: string;
   topPadding: string;
   paperLines: boolean;
-  pageEffect: 'none' | 'shadows' | 'scanner';
+  pageEffect: 'none' | 'shadows' | 'scanner' | 'vintage' | 'warm-glow' | 'crumpled';
   resolution: number;
   paperImage?: string;
 }
