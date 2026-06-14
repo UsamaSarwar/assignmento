@@ -60,28 +60,59 @@ export function useImageGenerator() {
     const originalHTML = paperContentEl.innerHTML;
     const images: GeneratedImage[] = [];
 
+    // Capture original style values
+    const viewHeight = pageElement.clientHeight || 700;
+    const originalHeight = pageElement.style.height;
+    const originalOverflow = pageElement.style.overflow;
+    const originalMinHeight = pageElement.style.minHeight;
+    const originalMaxHeight = pageElement.style.maxHeight;
+    const originalAspectRatio = pageElement.style.aspectRatio;
+    const originalContentHeight = paperContentEl.style.height;
+    const originalContentMinHeight = paperContentEl.style.minHeight;
+    const originalContentMaxHeight = paperContentEl.style.maxHeight;
+
+    const setAutoHeightMode = () => {
+      pageElement.style.height = 'auto';
+      pageElement.style.overflow = 'visible';
+      pageElement.style.minHeight = '0';
+      pageElement.style.maxHeight = 'none';
+      pageElement.style.aspectRatio = 'auto';
+      paperContentEl.style.height = 'auto';
+      paperContentEl.style.minHeight = '0';
+      paperContentEl.style.maxHeight = 'none';
+    };
+
+    const restoreOriginalStyles = () => {
+      pageElement.style.height = originalHeight;
+      pageElement.style.overflow = originalOverflow;
+      pageElement.style.minHeight = originalMinHeight;
+      pageElement.style.maxHeight = originalMaxHeight;
+      pageElement.style.aspectRatio = originalAspectRatio;
+      paperContentEl.style.height = originalContentHeight;
+      paperContentEl.style.minHeight = originalContentMinHeight;
+      paperContentEl.style.maxHeight = originalContentMaxHeight;
+    };
+
     try {
       // Ensure all images (if any) are loaded
       await new Promise(resolve => setTimeout(resolve, 500));
 
       // Temporarily expand to see all content
-      const originalHeight = pageElement.style.height;
-      const originalOverflow = pageElement.style.overflow;
-      pageElement.style.height = 'auto';
-      pageElement.style.overflow = 'visible';
+      setAutoHeightMode();
 
       const scrollHeight = paperContentEl.scrollHeight;
-      const viewHeight = 700; // Roughly A4 view height
       const totalPagesEstimate = Math.max(1, Math.ceil(scrollHeight / viewHeight));
 
       if (totalPagesEstimate <= 1) {
+        restoreOriginalStyles();
         const dataUrl = await capturePage(pageElement, options);
         images.push({ id: Math.random().toString(36).substr(2, 9), dataUrl });
       } else {
-        const splitContent = originalHTML.split(/(<p>.*?<\/p>|<br\/?>)/).filter(Boolean);
+        const splitContent = originalHTML.split(/(<p>.*?<\/p>|<br\/?>|<h1>.*?<\/h1>|<h2>.*?<\/h2>|<h3>.*?<\/h3>|<ul>.*?<\/ul>|<ol>.*?<\/ol>)/).filter(Boolean);
         let partIndex = 0;
 
         for (let i = 0; i < totalPagesEstimate + 2; i++) { 
+          setAutoHeightMode();
           paperContentEl.innerHTML = '';
           let lastValidHTML = '';
 
@@ -105,6 +136,7 @@ export function useImageGenerator() {
           }
 
           if (lastValidHTML !== '') {
+            restoreOriginalStyles();
             const dataUrl = await capturePage(pageElement, options);
             images.push({ id: Math.random().toString(36).substr(2, 9), dataUrl });
           }
@@ -116,15 +148,12 @@ export function useImageGenerator() {
       setOutputImages((prev) => [...prev, ...images]);
       toast.success(`Successfully generated ${images.length} page(s)!`);
       
-      // Restore
-      pageElement.style.height = originalHeight;
-      pageElement.style.overflow = originalOverflow;
-      paperContentEl.innerHTML = originalHTML;
-
     } catch (err) {
       console.error('Generation Error:', err);
       toast.error('Failed to generate image. Please try again.');
     } finally {
+      restoreOriginalStyles();
+      paperContentEl.innerHTML = originalHTML;
       setIsGenerating(false);
     }
   };
