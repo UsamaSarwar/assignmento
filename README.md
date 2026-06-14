@@ -1,4 +1,5 @@
 # [Assignmento](https://assignmento.usama.dev)
+
 _Free Text to Handwriting Converter Online Tool_
 
 > Stop wasting time writing, start building concepts.
@@ -27,7 +28,7 @@ Using Assignmento is simple! Just:
 - Custom Handwriting: Make it look like it came straight from your pen. Upload your own [handwriting](https://assignmento.usama.dev/#handwritings) font for a unique touch.
 - Handwriting Styles: Explore a variety of pre-loaded fonts to find the perfect style for your needs. [Quantum Enterprises](https://www.quantumenterprises.co.uk/handwriting-fonts/fontvault.htm) Open-source Project provides a great selection!
 - Light Theme: Keep things bright and easy on the eyes.
-- Free and Open Source: We believe everyone should have access to this powerful tool. Contribute to the project on [GitHub](https://github.com/Assignmento/assignmento.github.io)!
+- Free and Open Source: We believe everyone should have access to this powerful tool. Contribute to the project on [GitHub](https://github.com/UsamaSarwar/assignmento)!
 - Sponsor Us: Help us keep Assignmento free and growing with your [sponsorship](https://assignmento.usama.dev/#sponsorship). Every bit helps!
 
 We'd Love to Hear From You!
@@ -35,6 +36,6 @@ We'd Love to Hear From You!
 Have a question or want to contribute? We're here for you.
 
 - Email » [contact@usama.dev](mailto:contact@usama.dev)
-- GitHub » [Assignmento at GitHub](https://github.com/Assignmento/assignmento.github.io)
+- GitHub » [Assignmento at GitHub](https://github.com/UsamaSarwar/assignmento)
 
 Made with love in 2024. Assignmento - Because your time matters.
