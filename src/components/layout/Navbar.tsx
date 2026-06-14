@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Moon, Sun, Menu } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
@@ -11,11 +12,11 @@ export function Navbar() {
   const { setTheme, theme } = useTheme()
 
   const navLinks = [
-    { name: "Converter", href: "#" },
-    { name: "Handwritings", href: "#handwritings" },
-    { name: "Features", href: "#features" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Sponsor", href: "#sponsorship" },
+    { name: "Converter", href: "/" },
+    { name: "Handwritings", href: "/#handwritings" },
+    { name: "Features", href: "/#features" },
+    { name: "FAQ", href: "/#faq" },
+    { name: "Sponsor", href: "/#sponsorship" },
     { name: "Contact", href: "mailto:contact@usama.dev" },
     { name: "GitHub", href: "https://github.com/UsamaSarwar/assignmento" },
   ]
@@ -23,21 +24,43 @@ export function Navbar() {
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
       <div className="bg-background/60 backdrop-blur-md border border-border rounded-full px-6 py-2 flex items-center justify-between shadow-lg">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src="/logo.png" alt="Assignmento Logo" className="h-8 w-8 rounded-full" />
           <span className="font-bold text-2xl tracking-tight text-primary font-handwriting">Assignmento</span>
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              {link.name}
-            </a>
+            link.href.startsWith('http') || link.href.startsWith('mailto') ? (
+              <a
+                key={link.name}
+                href={link.href}
+                target={link.href.startsWith('http') ? "_blank" : undefined}
+                rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            ) : (
+              link.href.includes('#') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link.name}
+                </Link>
+              )
+            )
           ))}
           <Button
             variant="ghost"

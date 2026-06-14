@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Heart } from "lucide-react"
 
 export function Footer() {
@@ -37,8 +38,8 @@ export function Footer() {
 
         <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground mb-10">
           <a href="mailto:contact@usama.dev" className="hover:text-primary transition-colors">Contact Us</a>
-          <a href="#" className="hover:text-primary transition-colors">DMCA</a>
-          <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+          <Link to="/dmca" className="hover:text-primary transition-colors">DMCA</Link>
+          <Link to="/privacypolicy" className="hover:text-primary transition-colors">Privacy Policy</Link>
           <button 
             onClick={() => {
               localStorage.removeItem('assignmento-consent');

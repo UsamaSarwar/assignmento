@@ -67,6 +67,9 @@
     @apply bg-background text-foreground;
     font-family: 'Roboto', sans-serif;
   }
+  a:hover {
+    text-decoration: none !important;
+  }
 }
 
 @font-face {
