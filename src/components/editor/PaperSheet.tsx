@@ -21,6 +21,10 @@ export function PaperSheet({ config, content, pageRef, placeholder }: PaperSheet
     backgroundImage: config.paperImage ? `url(${config.paperImage})` : undefined,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ['--line-spacing' as any]: `${config.lineSpacing || 24}px`,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ['--line-offset' as any]: `${config.lineOffset || 0}px`,
   };
 
   return (
@@ -47,8 +51,8 @@ export function PaperSheet({ config, content, pageRef, placeholder }: PaperSheet
           <div 
             className={cn(
               "absolute inset-0 pointer-events-none z-10",
-              config.pageEffect === 'shadows' && "bg-gradient-to-tr from-black/20 to-transparent",
-              config.pageEffect === 'scanner' && "bg-gradient-to-b from-black/10 via-transparent to-black/10"
+              config.pageEffect === 'shadows' && "bg-linear-to-tr from-black/20 to-transparent",
+              config.pageEffect === 'scanner' && "bg-linear-to-b from-black/10 via-transparent to-black/10"
             )}
           />
         )}

@@ -155,6 +155,14 @@
 .main-content-editor .ql-editor {
   flex-grow: 1;
   min-height: 400px;
+  padding: 16px 20px !important;
+}
+
+.main-content-editor .ql-editor.ql-blank::before {
+  left: 20px !important;
+  top: 16px !important;
+  padding-left: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* Paper Preview Specifics */
@@ -166,11 +174,11 @@
 
 .paper-lines .paper-content.ql-editor {
   background-image: linear-gradient(rgba(153, 153, 153, 0.3) 1px, transparent 1px);
-  background-size: 100% 1.5rem;
+  background-size: 100% var(--line-spacing, 1.5rem);
   background-origin: content-box;
-  background-position: 0 -0.05rem;
+  background-position: 0 calc(var(--line-offset, 0px) - 0.05rem);
   background-repeat: repeat-y;
-  line-height: 1.5rem !important;
+  line-height: var(--line-spacing, 1.5rem) !important;
   padding-top: 1rem !important;
 }
 

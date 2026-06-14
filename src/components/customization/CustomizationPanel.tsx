@@ -150,13 +150,33 @@ export function CustomizationPanel({
                 />
               </div>
             </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label className="text-xs">Line (px)</Label>
+                <Input 
+                  type="number" 
+                  value={config.lineSpacing} 
+                  className="h-8 rounded-lg"
+                  onChange={(e) => handleChange('lineSpacing', e.target.value)} 
+                />
+              </div>
+              <div className="space-y-2">
+                <Label className="text-xs">Top Padding (px)</Label>
+                <Input 
+                  type="number" 
+                  value={config.topPadding} 
+                  className="h-8 rounded-lg"
+                  onChange={(e) => handleChange('topPadding', e.target.value)} 
+                />
+              </div>
+            </div>
             <div className="space-y-2">
-              <Label className="text-xs">Top Padding (px)</Label>
+              <Label className="text-xs">Line Offset (px) (shifts lines vertically)</Label>
               <Input 
                 type="number" 
-                value={config.topPadding} 
+                value={config.lineOffset} 
                 className="h-8 rounded-lg"
-                onChange={(e) => handleChange('topPadding', e.target.value)} 
+                onChange={(e) => handleChange('lineOffset', e.target.value)} 
               />
             </div>
           </DropdownMenuContent>

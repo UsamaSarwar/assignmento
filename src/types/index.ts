@@ -4,6 +4,8 @@ export interface Config {
   inkColor: string;
   letterSpacing: string;
   wordSpacing: string;
+  lineSpacing: string;
+  lineOffset: string;
   topPadding: string;
   paperLines: boolean;
   pageEffect: 'none' | 'shadows' | 'scanner';
@@ -17,6 +19,8 @@ export const DEFAULT_CONFIG: Config = {
   inkColor: '#000f55',
   letterSpacing: '0',
   wordSpacing: '0',
+  lineSpacing: '24',
+  lineOffset: '0',
   topPadding: '10',
   paperLines: true,
   pageEffect: 'none',
