@@ -190,10 +190,31 @@
 }
 
 /* Headings in Preview */
+.paper-content.ql-editor h1,
+.paper-content.ql-editor h2,
+.paper-content.ql-editor h3,
+.paper-content.ql-editor p,
+.paper-content.ql-editor ul,
+.paper-content.ql-editor ol,
+.paper-content.ql-editor li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.paper-lines .paper-content.ql-editor p,
+.paper-lines .paper-content.ql-editor li {
+  line-height: var(--line-spacing, 1.5rem) !important;
+}
+
 .paper-content.ql-editor h1 {
   font-size: 2em !important;
   font-weight: bold !important;
   display: block;
+}
+
+.paper-lines .paper-content.ql-editor h1 {
+  line-height: calc(var(--line-spacing, 1.5rem) * 2) !important;
+  padding-top: calc(var(--line-spacing, 1.5rem) * 0.1) !important;
 }
 
 .paper-content.ql-editor h2 {
@@ -202,10 +223,19 @@
   display: block;
 }
 
+.paper-lines .paper-content.ql-editor h2 {
+  line-height: calc(var(--line-spacing, 1.5rem) * 2) !important;
+  padding-top: calc(var(--line-spacing, 1.5rem) * 0.1) !important;
+}
+
 .paper-content.ql-editor h3 {
   font-size: 1.25em !important;
   font-weight: bold !important;
   display: block;
+}
+
+.paper-lines .paper-content.ql-editor h3 {
+  line-height: var(--line-spacing, 1.5rem) !important;
 }
 
 /* Alignment in Preview */
