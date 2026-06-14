@@ -11,15 +11,11 @@ import {
 interface OutputSectionProps {
   images: GeneratedImage[];
   onDelete: (id: string) => void;
-  onMoveLeft: (index: number) => void;
-  onMoveRight: (index: number) => void;
 }
 
 export function OutputSection({
   images,
   onDelete,
-  onMoveLeft,
-  onMoveRight,
 }: OutputSectionProps) {
   if (images.length === 0) return null;
 
@@ -33,15 +29,11 @@ export function OutputSection({
       >
         <CarouselContent className="-ml-4">
           {images.map((image, index) => (
-            <CarouselItem key={image.id} className="pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-full xl:basis-1/2">
+            <CarouselItem key={image.id} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
               <OutputImageCard
                 image={image}
                 index={index}
-                isFirst={index === 0}
-                isLast={index === images.length - 1}
                 onDelete={onDelete}
-                onMoveLeft={onMoveLeft}
-                onMoveRight={onMoveRight}
               />
             </CarouselItem>
           ))}

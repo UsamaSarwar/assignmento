@@ -27,8 +27,6 @@ export function Home() {
     downloadAsPDF,
     deleteImage,
     deleteAll,
-    moveLeft,
-    moveRight,
   } = useImageGenerator();
 
   const handleGenerate = () => {
@@ -76,6 +74,7 @@ export function Home() {
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch max-w-7xl mx-auto">
+            {/* Left Column: Modern Text Box */}
             <div className="flex flex-col space-y-4">
               <div className="flex items-center justify-between h-10">
                 <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
@@ -95,27 +94,9 @@ export function Home() {
               <div className="flex-grow">
                 <MainEditor content={content} onContentChange={setContent} />
               </div>
-
-              <div className={cn("mt-8 space-y-4 transition-all duration-500", outputImages.length === 0 ? "opacity-60" : "opacity-100")}>
-                <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
-                  <FileImage className="h-5 w-5 text-primary" />
-                  Generated Pages {outputImages.length > 0 && <span className="text-sm font-normal text-muted-foreground ml-2">({outputImages.length})</span>}
-                </h2>
-                {outputImages.length > 0 ? (
-                  <OutputSection 
-                    images={outputImages}
-                    onDelete={deleteImage}
-                    onMoveLeft={moveLeft}
-                    onMoveRight={moveRight}
-                  />
-                ) : (
-                  <div className="border-2 border-dashed border-border rounded-3xl p-12 text-center bg-muted/20">
-                    <p className="text-muted-foreground text-sm italic">Click "Generate" above to see your handwritten pages here.</p>
-                  </div>
-                )}
-              </div>
             </div>
             
+            {/* Right Column: Real-time Preview */}
             <div className="flex flex-col space-y-4">
               <div className="flex items-center h-10">
                 <h2 className="text-xl font-bold tracking-tight flex items-center gap-2">
@@ -131,6 +112,39 @@ export function Home() {
                   placeholder="Start typing your assignment here..."
                 />
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel of Generated Images - Moved here for full width */}
+        <div id="generated-pages" className={cn("mt-16 py-16 bg-muted/30 border-y border-border transition-all duration-500", outputImages.length === 0 ? "opacity-40" : "opacity-100")}>
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto space-y-8">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-3">
+                  <FileImage className="h-7 w-7 text-primary" />
+                  Generated Pages {outputImages.length > 0 && <span className="text-lg font-normal text-muted-foreground">({outputImages.length})</span>}
+                </h2>
+                {outputImages.length > 0 && (
+                   <div className="flex gap-2 w-full sm:w-auto">
+                     <Button variant="outline" size="sm" onClick={deleteAll} className="rounded-xl flex-grow sm:flex-grow-0">Clear All</Button>
+                     <Button size="sm" onClick={downloadAsPDF} className="rounded-xl flex-grow sm:flex-grow-0">Download PDF</Button>
+                   </div>
+                )}
+              </div>
+              
+              {outputImages.length > 0 ? (
+                <OutputSection 
+                  images={outputImages}
+                  onDelete={deleteImage}
+                />
+              ) : (
+                <div className="border-2 border-dashed border-border rounded-3xl p-16 text-center bg-background/50">
+                  <FileImage className="h-12 w-12 text-muted-foreground/30 mx-auto mb-4" />
+                  <p className="text-muted-foreground text-lg italic font-medium">Click "Generate" above to see your handwritten pages here.</p>
+                  <p className="text-muted-foreground/60 text-sm mt-2">Multiple pages will be automatically generated for long content.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
