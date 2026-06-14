@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Handwriting fonts */
+  --font-handwriting: 'Caveat', cursive;
+  --font-hindi: 'Hindi_Font', cursive;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+@font-face {
+  font-family: 'Hindi_Font';
+  src: url('/fonts/Hindi_Type.ttf');
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #333333;
+  --card: #f3f3f3;
+  --card-foreground: #333333;
+  --popover: #ffffff;
+  --popover-foreground: #333333;
+  --primary: #1e88e5;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f3f3;
+  --secondary-foreground: #1e88e5;
+  --muted: #f3f3f3;
+  --muted-foreground: #666666;
+  --accent: #f3f3f3;
+  --accent-foreground: #1e88e5;
+  --destructive: #dc3545;
+  --destructive-foreground: #ffffff;
+  --border: #e0e0e0;
+  --input: #e0e0e0;
+  --ring: #1e88e5;
+  --radius: 0.5rem;
+  
+  /* Legacy mapping */
+  --ink-color: #000f55;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #cccccc;
+  --card: #1d1d1d;
+  --card-foreground: #cccccc;
+  --popover: #121212;
+  --popover-foreground: #cccccc;
+  --primary: #1e88e5;
+  --primary-foreground: #ffffff;
+  --secondary: #1d1d1d;
+  --secondary-foreground: #ffffff;
+  --muted: #1d1d1d;
+  --muted-foreground: #888888;
+  --accent: #1d1d1d;
+  --accent-foreground: #ffffff;
+  --destructive: #e76f7b;
+  --destructive-foreground: #111111;
+  --border: #222222;
+  --input: #222222;
+  --ring: #1e88e5;
+}
+
+/* Quill Handwriting Classes */
+.ql-font-caveat { font-family: 'Caveat', cursive; }
+.ql-font-indie-flower { font-family: 'Indie Flower', cursive; }
+.ql-font-shadows-into-light { font-family: 'Shadows Into Light', cursive; }
+.ql-font-hindi { font-family: 'Hindi_Font', cursive; }
+
+/* Main Content Editor (Snow Theme) */
+.main-content-editor .ql-toolbar.ql-snow {
+  border: none !important;
+  background: transparent !important;
+  padding: 8px 12px !important;
+}
+
+.main-content-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content-editor .ql-container.ql-snow {
+  border: none !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 1rem !important;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content-editor .ql-editor {
+  flex-grow: 1;
+  min-height: 400px;
+}
+
+/* Paper Preview Specifics */
+.paper-content.ql-editor {
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.paper-lines .paper-content.ql-editor {
+  background-image: linear-gradient(rgba(153, 153, 153, 0.3) 1px, transparent 1px);
+  background-size: 100% 1.5rem;
+  background-origin: content-box;
+  background-position: 0 -0.05rem;
+  background-repeat: repeat-y;
+  line-height: 1.5rem !important;
+  padding-top: 1rem !important;
+}
+
+.paper-content.ql-editor {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Fix Placeholder in preview */
+.paper-content.is-blank p {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: inherit !important;
+}
+
+/* Fix Quill Bubble clipping and style */
+.ql-container.ql-bubble {
+  overflow: visible !important;
+}
+
+.ql-bubble .ql-tooltip {
+  z-index: 100 !important;
+  background-color: hsl(var(--background)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 9999px !important;
+  box-shadow: var(--shadow-lg) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.ql-bubble .ql-tooltip-arrow {
+  border-bottom-color: hsl(var(--border)) !important;
+}
+
+.ql-bubble .ql-toolbar button:hover,
+.ql-bubble .ql-toolbar button.ql-active {
+  color: hsl(var(--primary)) !important;
+}
+
+.handwriting-editor .ql-container.ql-bubble {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  height: auto !important;
+}
+
+.handwriting-editor .ql-editor {
+  min-height: 100%;
+  padding-bottom: 2rem !important;
+}
+
+/* Fix Placeholder overlap */
+.ql-container.ql-bubble .ql-editor.ql-blank::before,
+.ql-container.ql-snow .ql-editor.ql-blank::before {
+  left: 0 !important;
+  right: 0 !important;
+  padding-left: inherit !important;
+  padding-top: inherit !important;
+  font-style: italic;
+  opacity: 0.3;
+  pointer-events: none;
+  font-family: inherit;
+}
+
+/* Paper Noise Texture */
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Custom Scrollbar for the page */
+#page-a::-webkit-scrollbar {
+  width: 6px;
+}
+
+#page-a::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#page-a::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+#page-a::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
