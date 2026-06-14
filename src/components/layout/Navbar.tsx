@@ -26,7 +26,7 @@ export function Navbar() {
       <div className="bg-background/60 backdrop-blur-md border border-border rounded-full px-6 py-2 flex items-center justify-between shadow-lg">
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src="/logo.png" alt="Assignmento Logo" className="h-8 w-8 rounded-full" />
-          <span className="font-bold text-2xl tracking-tight text-primary font-handwriting">Assignmento</span>
+          <span className="font-normal text-2xl tracking-tight text-primary font-handwriting">Assignmento</span>
         </Link>
 
         {/* Desktop Links */}

@@ -53,7 +53,7 @@ export function Home() {
 
   return (
     <>
-      <main className="flex-grow pt-32 pb-20">
+      <main className="grow pt-32 pb-20">
         <div className="container mx-auto px-4">
           <section className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
@@ -91,7 +91,7 @@ export function Home() {
                   Draw / Add Image
                 </Button>
               </div>
-              <div className="flex-grow">
+              <div className="grow">
                 <MainEditor content={content} onContentChange={setContent} />
               </div>
             </div>
@@ -104,7 +104,7 @@ export function Home() {
                   Handwriting Preview
                 </h2>
               </div>
-              <div className="flex-grow flex items-start justify-center">
+              <div className="grow flex items-start justify-center">
                 <PaperSheet 
                   config={config} 
                   content={content} 
@@ -127,8 +127,8 @@ export function Home() {
                 </h2>
                 {outputImages.length > 0 && (
                    <div className="flex gap-2 w-full sm:w-auto">
-                     <Button variant="outline" size="sm" onClick={deleteAll} className="rounded-xl flex-grow sm:flex-grow-0">Clear All</Button>
-                     <Button size="sm" onClick={downloadAsPDF} className="rounded-xl flex-grow sm:flex-grow-0">Download PDF</Button>
+                     <Button variant="outline" size="sm" onClick={deleteAll} className="rounded-xl grow sm:grow-0">Clear All</Button>
+                     <Button size="sm" onClick={downloadAsPDF} className="rounded-xl grow sm:grow-0">Download PDF</Button>
                    </div>
                 )}
               </div>

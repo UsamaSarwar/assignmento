@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-background flex flex-col font-sans text-foreground">
-        <Toaster position="top-center" richColors closeButton />
+        <Toaster position="top-right" richColors closeButton />
         <Navbar />
         
         <Routes>
